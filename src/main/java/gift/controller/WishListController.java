@@ -1,5 +1,6 @@
 package gift.controller;
 
+import gift.DTO.ProductDTO;
 import gift.auth.DTO.MemberDTO;
 import gift.auth.LoginMember;
 import gift.service.WishListService;
@@ -31,9 +32,9 @@ public class WishListController {
      * @return 생성된 위시리스트 항목의 ID 리스트
      */
     @PostMapping
-    public ResponseEntity<List<Long>> createWishList(@RequestParam Long productId,
+    public ResponseEntity<List<ProductDTO>> createWishList(@RequestParam Long productId,
         @LoginMember MemberDTO memberDTO) {
-        List<Long> newWishListIds = wishListService.createWishList(productId, memberDTO.getId());
+        List<ProductDTO> newWishListIds = wishListService.addWishList(productId, memberDTO.getId());
         return ResponseEntity.ok(newWishListIds);
     }
 
@@ -44,8 +45,8 @@ public class WishListController {
      * @return 지정된 사용자의 모든 위시리스트 항목의 상품 ID 리스트
      */
     @GetMapping
-    public ResponseEntity<List<Long>> getWishListsByUserId(@LoginMember MemberDTO memberDTO) {
-        List<Long> productIds = wishListService.getWishListsByUserId(memberDTO.getId());
+    public ResponseEntity<List<ProductDTO>> getWishListsByUserId(@LoginMember MemberDTO memberDTO) {
+        List<ProductDTO> productIds = wishListService.getWishListsByUserId(memberDTO.getId());
         return ResponseEntity.ok(productIds);
     }
 
@@ -87,7 +88,7 @@ public class WishListController {
     @PostMapping("/{productId}")
     public ResponseEntity<Void> addWishListByUserIdAndProductId(@PathVariable Long productId,
         @LoginMember MemberDTO memberDTO) {
-        wishListService.addWishListByUserIdAndProductId(memberDTO.getId(), productId);
+        wishListService.addWishList(memberDTO.getId(), productId);
         return ResponseEntity.ok().build();
     }
 }

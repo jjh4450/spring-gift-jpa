@@ -46,4 +46,15 @@ public class MemberService {
         MemberEntity member = memberRepository.findByEmailAndPasswordAndDeleteFalse(memberDTO.getEmail(), memberDTO.getPassword());
         return member != null ? member.getId() : -1;
     }
+
+    /**
+     * 사용자 ID로 사용자 조회 메서드
+     *
+     * @param id 사용자 ID
+     * @return 사용자
+     */
+    public MemberDTO getMember(long id) {
+        MemberEntity member = memberRepository.findById(id).get();
+        return new MemberDTO(member.getId(), member.getEmail(), member.getPassword());
+    }
 }
