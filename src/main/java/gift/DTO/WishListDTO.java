@@ -17,11 +17,11 @@ public record WishListDTO(
     MemberDTO memberDTO
 ) {
 
-    public WishListDTO(ProductDTO productDTO, MemberDTO memberDTO){
+    public WishListDTO(ProductDTO productDTO, MemberDTO memberDTO) {
         this(-1, productDTO, memberDTO);
     }
 
-   public WishListDTO(long id, ProductDTO productDTO, MemberDTO memberDTO){
-         this(id, productDTO.id(), memberDTO.getId(), productDTO, memberDTO);
-   }
+    public WishListDTO(long id, ProductDTO productDTO, MemberDTO memberDTO) {
+        this(id, productDTO.id(), memberDTO.getId(), productDTO, memberDTO);
+    }
 }

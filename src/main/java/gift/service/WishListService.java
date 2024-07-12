@@ -2,13 +2,11 @@ package gift.service;
 
 import gift.DTO.ProductDTO;
 import gift.DTO.WishListDTO;
-import gift.model.wishlist.WishListEntity;
 import gift.aspect.CheckProductExists;
+import gift.model.wishlist.WishListEntity;
 import gift.model.wishlist.WishListRepository;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -28,7 +26,8 @@ public class WishListService {
      *
      * @param wishListRepository WishListDAO 객체
      */
-    public WishListService(WishListRepository wishListRepository, ProductService productService, MemberService memberService) {
+    public WishListService(WishListRepository wishListRepository, ProductService productService,
+        MemberService memberService) {
         this.wishListRepository = wishListRepository;
         this.productService = productService;
         this.memberService = memberService;
@@ -44,18 +43,17 @@ public class WishListService {
 
     private WishListDTO toWishListDTO(WishListEntity wishListEntity) {
         return new WishListDTO(
-                    wishListEntity.getId(),
-                    wishListEntity.getProductDTO(),
-                    wishListEntity.getMemberDTO()
-                );
+            wishListEntity.getId(),
+            wishListEntity.getProductDTO(),
+            wishListEntity.getMemberDTO()
+        );
     }
 
-    private WishListDTO wishListDTOmaker(long productId, long userId){
+    private WishListDTO wishListDTOmaker(long productId, long userId) {
         var ProductEntity = productService.getProduct(productId);
         var MemberEntity = memberService.getMember(userId);
         return new WishListDTO(ProductEntity, MemberEntity);
     }
-
 
 
     /**

@@ -13,6 +13,7 @@ import java.util.List;
 
 @Entity
 public class ProductEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,6 +29,7 @@ public class ProductEntity {
 
     @OneToMany(mappedBy = "productEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WishListEntity> wishListEntities;
+
     public List<WishListEntity> getWishListEntities() {
         return wishListEntities;
     }
@@ -35,7 +37,6 @@ public class ProductEntity {
     public void setWishListEntities(List<WishListEntity> wishListEntities) {
         this.wishListEntities = wishListEntities;
     }
-
 
 
     public ProductEntity() {

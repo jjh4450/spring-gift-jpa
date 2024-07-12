@@ -21,12 +21,12 @@ public class WishListEntity {
     private Long id;
 
     @Column(nullable = false)
-    @JoinColumn(name="product_id")
+    @JoinColumn(name = "product_id")
     @ManyToOne(targetEntity = ProductEntity.class, fetch = FetchType.LAZY)
     private ProductDTO productDTO;
 
     @Column(nullable = false)
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     @ManyToOne(targetEntity = MemberEntity.class, fetch = FetchType.LAZY)
     private MemberDTO memberDTO;
 

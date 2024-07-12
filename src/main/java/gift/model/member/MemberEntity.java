@@ -30,6 +30,7 @@ public class MemberEntity {
 
     @OneToMany(mappedBy = "memberEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WishListEntity> wishListEntities;
+
     public List<WishListEntity> getWishListEntities() {
         return wishListEntities;
     }
@@ -37,7 +38,6 @@ public class MemberEntity {
     public void setWishListEntities(List<WishListEntity> wishListEntities) {
         this.wishListEntities = wishListEntities;
     }
-
 
 
     public MemberEntity() {
