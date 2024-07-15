@@ -1,6 +1,6 @@
 package gift.e2e;
 
-import gift.auth.DTO.MemberDTO;
+import gift.DTO.MemberDTO;
 import gift.auth.DTO.TokenDTO;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;

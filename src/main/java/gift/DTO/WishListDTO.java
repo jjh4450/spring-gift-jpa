@@ -1,6 +1,5 @@
 package gift.DTO;
 
-import gift.auth.DTO.MemberDTO;
 import jakarta.validation.constraints.NotNull;
 
 public record WishListDTO(

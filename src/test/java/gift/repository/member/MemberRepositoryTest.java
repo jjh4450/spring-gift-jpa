@@ -1,7 +1,9 @@
-package gift.model.member;
+package gift.repository.member;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import gift.entity.MemberEntity;
+import gift.repository.MemberRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

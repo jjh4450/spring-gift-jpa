@@ -1,8 +1,8 @@
 package gift.mapper;
 
+import gift.DTO.MemberDTO;
 import gift.DTO.WishListDTO;
-import gift.auth.DTO.MemberDTO;
-import gift.model.wishlist.WishListEntity;
+import gift.entity.WishListEntity;
 import gift.service.MemberService;
 import gift.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package gift.aspect;
 
 import gift.exception.ProductNotFoundException;
-import gift.model.product.ProductRepository;
+import gift.repository.ProductRepository;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;

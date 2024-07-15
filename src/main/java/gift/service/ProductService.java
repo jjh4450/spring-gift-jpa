@@ -3,14 +3,13 @@ package gift.service;
 import gift.DTO.ProductDTO;
 import gift.aspect.CheckProductExists;
 import gift.mapper.ProductMapper;
-import gift.model.product.ProductRepository;
-import jakarta.transaction.Transactional;
+import gift.repository.ProductRepository;
 import java.util.List;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 public class ProductService {
 
     ProductRepository productRepository;
@@ -27,6 +26,7 @@ public class ProductService {
      *
      * @param productDTO 저장할 상품 객체
      */
+    @Transactional
     public ProductDTO createProduct(ProductDTO productDTO) {
         var productEntity = productMapper.toProductEntity(productDTO, false);
         productRepository.save(productEntity);
@@ -39,6 +39,7 @@ public class ProductService {
      * @param id 조회할 상품의 ID
      */
     @CheckProductExists
+    @Transactional(readOnly = true)
     public ProductDTO getProduct(Long id) {
         var productEntity = productRepository.findById(id).get();
         return productMapper.toProductDTO(productEntity);
@@ -47,6 +48,7 @@ public class ProductService {
     /**
      * 모든 상품을 반환함
      */
+    @Transactional(readOnly = true)
     public List<ProductDTO> getAllProducts() {
         var productEntities = productRepository.findAll();
         return productEntities.stream().map(productMapper::toProductDTO).toList();
@@ -58,6 +60,7 @@ public class ProductService {
      * @param id 삭제할 상품의 ID
      */
     @CheckProductExists
+    @Transactional
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
@@ -68,6 +71,7 @@ public class ProductService {
      * @param productDTO 갱신할 상품 객체
      */
     @CheckProductExists
+    @Transactional
     public ProductDTO updateProduct(Long id, ProductDTO productDTO) {
         var productEntity = productMapper.toProductEntity(productDTO);
         productEntity.setId(id);
@@ -75,6 +79,13 @@ public class ProductService {
         return productMapper.toProductDTO(productEntity);
     }
 
+    /**
+     * 사용자 ID를 통해 사용자의 상품 목록을 가져옵니다.
+     *
+     * @param pageable 페이지 정보
+     * @return ProductDTO 목록
+     */
+    @Transactional(readOnly = true)
     public List<ProductDTO> getAllProducts(Pageable pageable) {
         var productEntities = productRepository.findAll(pageable).toList();
         return productEntities.stream().map(productMapper::toProductDTO).toList();

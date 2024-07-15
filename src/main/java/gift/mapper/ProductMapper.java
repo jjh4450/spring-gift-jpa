@@ -1,7 +1,7 @@
 package gift.mapper;
 
 import gift.DTO.ProductDTO;
-import gift.model.product.ProductEntity;
+import gift.entity.ProductEntity;
 import org.springframework.stereotype.Component;
 
 /**

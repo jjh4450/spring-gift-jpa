@@ -1,6 +1,6 @@
-package gift.model.member;
+package gift.entity;
 
-import gift.model.wishlist.WishListEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,7 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.util.List;
 
-@Entity
+@Entity(name = "member")
 public class MemberEntity {
 
 
@@ -28,6 +28,7 @@ public class MemberEntity {
     @Column(nullable = false)
     private boolean delete = false;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "memberEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WishListEntity> wishListEntities;
 

@@ -1,8 +1,7 @@
-package gift.model.wishlist;
+package gift.entity;
 
-import gift.model.member.MemberEntity;
-import gift.model.product.ProductEntity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,8 +11,10 @@ import jakarta.persistence.ManyToOne;
 import java.time.LocalDateTime;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-@Entity
+@Entity(name = "wishlist")
+@EntityListeners(value = AuditingEntityListener.class)
 public class WishListEntity {
 
     @Id

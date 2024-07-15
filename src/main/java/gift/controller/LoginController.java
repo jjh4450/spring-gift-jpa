@@ -1,8 +1,8 @@
-package gift.auth.controller;
+package gift.controller;
 
-import gift.auth.DTO.MemberDTO;
+import gift.DTO.MemberDTO;
 import gift.auth.DTO.TokenDTO;
-import gift.auth.service.LoginService;
+import gift.service.MemberService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     @Autowired
-    private LoginService loginService;
+    private MemberService memberService;
 
     /**
      * 로그인 메서드
@@ -29,7 +29,7 @@ public class LoginController {
      */
     @PostMapping
     public ResponseEntity<TokenDTO> Login(@Valid @RequestBody MemberDTO memberDTO) {
-        return ResponseEntity.ok(loginService.Login(memberDTO));
+        return ResponseEntity.ok(memberService.login(memberDTO));
     }
 
     /**
@@ -39,7 +39,7 @@ public class LoginController {
      * @return 토큰 정보
      */
     @PostMapping("/signup")
-    public ResponseEntity<TokenDTO> SignUp(@Valid @RequestBody MemberDTO memberDTO) {
-        return ResponseEntity.ok(loginService.SignUp(memberDTO));
+    public ResponseEntity<TokenDTO> signUp(@Valid @RequestBody MemberDTO memberDTO) {
+        return ResponseEntity.ok(memberService.signUp(memberDTO));
     }
 }

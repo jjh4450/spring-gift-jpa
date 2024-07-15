@@ -1,7 +1,7 @@
 package gift.mapper;
 
-import gift.auth.DTO.MemberDTO;
-import gift.model.member.MemberEntity;
+import gift.DTO.MemberDTO;
+import gift.entity.MemberEntity;
 import org.springframework.stereotype.Component;
 
 /**

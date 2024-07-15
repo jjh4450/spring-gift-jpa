@@ -1,7 +1,7 @@
 package gift.controller;
 
+import gift.DTO.MemberDTO;
 import gift.DTO.ProductDTO;
-import gift.auth.DTO.MemberDTO;
 import gift.auth.LoginMember;
 import gift.service.WishListService;
 import java.util.List;

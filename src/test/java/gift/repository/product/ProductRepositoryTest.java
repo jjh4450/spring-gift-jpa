@@ -1,8 +1,10 @@
-package gift.model.product;
+package gift.repository.product;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import gift.entity.ProductEntity;
+import gift.repository.ProductRepository;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,6 @@
 package gift.auth;
 
-import gift.auth.DTO.MemberDTO;
+import gift.DTO.MemberDTO;
 import gift.auth.utill.JwtToken;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.HttpServletRequest;

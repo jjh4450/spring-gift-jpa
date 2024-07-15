@@ -1,9 +1,10 @@
-package gift.model.product;
+package gift.entity;
 
-import gift.model.wishlist.WishListEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,8 +14,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-@Entity
+@Entity(name = "product")
+@EntityListeners(value = AuditingEntityListener.class)
 public class ProductEntity {
 
     @Id
@@ -30,6 +33,7 @@ public class ProductEntity {
     @Column(nullable = false)
     private String imageUrl;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "productEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<WishListEntity> wishListEntities;
 
